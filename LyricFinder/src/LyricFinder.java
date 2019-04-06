@@ -10,15 +10,18 @@ public class LyricFinder{
 	
 	
 	public static void main(String[] args) {
-		Scanner keyboard = new Scanner(System.in);
+	Scanner keyboard = new Scanner(System.in);
         String userInput;
+        
+	String lyricLine1;
+        String lyricLine2;
         
         System.out.println("\nEnter a lyric and we'll do our best to find the song: ");
         userInput = keyboard.next();
         
         while (userInput != null) {
         	if (userInput.toLowerCase().equals(lyricLine1) || userInput.toLowerCase().equals(lyricLine2)) {
-        		System.out.println()
+        		System.out.println(Song);
         	}
             
         }
@@ -31,14 +34,12 @@ public class LyricFinder{
 	private static Song[] getSongs() throws FileNotFoundException{
         Song[] songs = new Song[songNames.length];
         for (int i = 0; i <= songNames.length - 1; i++) {
-               String teamName = songNames[i], teamCity, teamStats;
+               String songName = songNames[i];
                
-               File teamFile = new File("Stats/" + songNames[i] + "Stats");
-               if (teamFile.exists()) {
-                     ArrayList<String> contents = getContents(teamFile);
+               File songFile = new File("Songs/" + songNames[i]);
+               if (songFile.exists()) {
+                     ArrayList<String> contents = getContents(songFile);
                      
-                     teamCity = contents.get(0).trim();
-                     teamStats = contents.get(1).trim();
                      songs[i] = new Song(teamName, teamCity, teamStats);
                }
         }
