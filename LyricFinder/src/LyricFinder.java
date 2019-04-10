@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class LyricFinder{
 	
-	private static final String[] songs = new String[] {"7rings", "babyshark", "igottafeeling"};
+	private static final String[] songNames = new String[] {"7rings", "Babyshark", "I Gotta Feeling"};
 	
 	
 	
@@ -32,15 +32,18 @@ public class LyricFinder{
 	
 	
 	private static Song[] getSongs() throws FileNotFoundException{
-        Song[] song = new Song[songs.length];
-        for (int i = 0; i <= songs.length - 1; i++) {
-               String songName = songs[i];
+        Song[] song = new Song[songNames.length];
+        for (int i = 0; i <= songNames.length - 1; i++) {
+               String songName = songNames[i], songArtist, songLyrics;
                
                File songFile = new File("Songs/" + songNames[i]);
+               
                if (songFile.exists()) {
                      ArrayList<String> contents = getContents(songFile);
                      
-                     songs[i] = new Song(lyrics, songTitle, artist);
+                     songArtist = contents.get(1).trim();
+                     songLyrics = contents.get(2).trim();
+                     songNames[i] = new Song(songName, songArtist, songLyrics);
                }
         }
         return song;
@@ -50,8 +53,11 @@ public class LyricFinder{
 	
 	public static ArrayList<String> getContents(File file) throws FileNotFoundException {
         Scanner reader = new Scanner(file);
+    
         reader.useDelimiter(";");
+
         ArrayList<String> contents = new ArrayList<String>();
+        
         while (reader.hasNext()) {
                contents.add(reader.next());
         }
