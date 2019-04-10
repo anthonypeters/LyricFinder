@@ -12,17 +12,17 @@ public class LyricFinder{
 	public static void main(String[] args) {
 		Scanner keyboard = new Scanner(System.in);
         String userInput;
-        
-        String lyricLine1;
-        String lyricLine2;
-        
+               
         System.out.println("\nEnter a lyric and we'll do our best to find the song: ");
         userInput = keyboard.next();
         
         while (userInput != null) {
-        	if (userInput.toLowerCase().equals(lyricLine1) || userInput.toLowerCase().equals(lyricLine2)) {
-        		System.out.println();
+        	for (int i =0; i<= songNames.length; i++) {
+        		if (userInput.toLowerCase().equals() || userInput.toLowerCase().equals()) {
+            		System.out.println();
+            	}
         	}
+        	
             
         }
         
