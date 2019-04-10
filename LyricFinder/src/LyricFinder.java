@@ -42,8 +42,8 @@ public class LyricFinder{
                      ArrayList<String> contents = getContents(songFile);
                      
                      songArtist = contents.get(1).trim();
-                     songLyrics = contents.get(2).trim();
-                     songNames[i] = new Song(songName, songArtist, songLyrics);
+                     songLyrics = contents.get(2).trim(); //This will only get the contents of the lyrics in index 2
+                     song[i] = new Song(songName, songArtist, songLyrics);
                }
         }
         return song;
