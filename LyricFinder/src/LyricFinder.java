@@ -5,26 +5,31 @@ import java.util.Scanner;
 
 public class LyricFinder{
 	
-	private static final String[] songNames = new String[] {"7rings", "Babyshark", "I Gotta Feeling"};
+	private static final String[] songNames = new String[] {"7 Rings"};
 	
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		Scanner keyboard = new Scanner(System.in);
-        String userInput;
-               
-        System.out.println("\nEnter a lyric and we'll do our best to find the song: ");
-        userInput = keyboard.next();
+        //String userInput;
         
-        while (userInput != null) {
-        	for (int i =0; i<= songNames.length; i++) {
-        		if (userInput.toLowerCase().equals() || userInput.toLowerCase().equals()) {
-            		System.out.println();
-            	}
-        	}
-        	
-            
+        Song[] songs = getSongs();
+        
+        //System.out.println("Enter a lyric and we'll do our best to find the song: ");
+        //userInput = keyboard.next();
+        
+        for (Song song : songs) {
+        	System.out.println(song.getSongName());
         }
+        
+       // while (userInput != null) {
+        	//for (int i =0; i<= songNames.length; i++) {
+        		//if (userInput.toLowerCase().equals() || userInput.toLowerCase().equals()) {
+            		//System.out.println();
+            	//}
+        	//}
+	
+          
         
 	}
 	
