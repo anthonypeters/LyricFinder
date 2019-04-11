@@ -11,26 +11,34 @@ public class LyricFinder{
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner keyboard = new Scanner(System.in);
-        //String userInput;
+        String userInput;
         
         Song[] songs = getSongs();
-        
-        //System.out.println("Enter a lyric and we'll do our best to find the song: ");
-        //userInput = keyboard.next();
+
+        System.out.println("Enter a song name and we'll do our best to find the song and its contents!\n");
         
         for (Song song : songs) {
         	System.out.println(song.getSongName());
         }
-        
-       // while (userInput != null) {
-        	//for (int i =0; i<= songNames.length; i++) {
-        		//if (userInput.toLowerCase().equals() || userInput.toLowerCase().equals()) {
-            		//System.out.println();
-            	//}
-        	//}
-	
-          
-        
+      
+        System.out.println("\nEnter here: ");
+        while (true) {
+            userInput = keyboard.nextLine();
+            
+            if (userInput.equalsIgnoreCase("stop")) {
+                  break;
+            }
+            
+            Song songToShow = null;
+            for (Song song : songs) {
+                  if (userInput.equalsIgnoreCase(song.getSongName())) {
+                         songToShow = song;
+                         break;
+                  }
+            }
+            System.out.println(songToShow); 
+            }
+        keyboard.close();
 	}
 	
 	
@@ -47,7 +55,9 @@ public class LyricFinder{
                      ArrayList<String> contents = getContents(songFile);
                      
                      songArtist = contents.get(1).trim();
-                     songLyrics = contents.get(2).trim(); //This will only get the contents of the lyrics in index 2
+                     
+                     songLyrics = contents.get(2).trim();              
+                     
                      song[i] = new Song(songName, songArtist, songLyrics);
                }
         }
@@ -62,6 +72,7 @@ public class LyricFinder{
         reader.useDelimiter(";");
 
         ArrayList<String> contents = new ArrayList<String>();
+        
         
         while (reader.hasNext()) {
                contents.add(reader.next());
