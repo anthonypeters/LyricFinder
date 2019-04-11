@@ -11,10 +11,17 @@ public class Song {
         this.artist = artist;
   }
 	public String toString() {
-        return String.format("%s %s: %s", songName, artist, lyrics);
+        return String.format("\nTitle: %s \n\nArtist: %s \n\nLyrics: \n%s", songName, artist, lyrics);
   }
 	public String getSongName() {
         return this.songName;
   }
+	public String getArtistName() {
+        return this.artist;
+  }
+	public String getLyrics() {
+        return this.lyrics;
+  }
 
 }
+
