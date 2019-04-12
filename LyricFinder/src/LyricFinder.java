@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class LyricFinder{
 	
-	private static final String[] songNames = new String[] {"7 Rings, Another One Bites the Dust, Isn't She Lovely, Old Town Road, Thriller"};
+	private static final String[] songNames = new String[] {"7 Rings", "Another One Bites the Dust", "Isn't She Lovely", "Old Town Road", "Thriller"};
 	
 	
 	
@@ -47,16 +47,20 @@ public class LyricFinder{
 	private static Song[] getSongs() throws FileNotFoundException{
         Song[] song = new Song[songNames.length];
         for (int i = 0; i <= songNames.length - 1; i++) {
-               String songName = songNames[i], songArtist, songLyrics;
+               String songName = songNames[i], songArtist;
+               
                
                File songFile = new File("Songs/" + songNames[i]);
                
                if (songFile.exists()) {
                      ArrayList<String> contents = getContents(songFile);
+                     ArrayList<String> songLyrics = new ArrayList<String>();
                      
                      songArtist = contents.get(1).trim();
                      
-                     songLyrics = contents.get(2).trim();              
+                     for (int j=3; j <contents.size()-1; j++) {
+                    	 songLyrics.add(contents.get(j));
+                     }             
                      
                      song[i] = new Song(songName, songArtist, songLyrics);
                }
