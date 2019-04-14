@@ -20,12 +20,8 @@ public class Song {
 	public String getArtistName() {
         return this.artist;
   }
-	public String getLyrics() {
-		String a ="";
-		for(int i =0; i<lyrics.size()-1;) {
-			a = lyrics.get(i)+"\n";
-		}
-		return a;
+	public ArrayList<String> getLyrics() {
+		return this.lyrics;
   }
 
 }
