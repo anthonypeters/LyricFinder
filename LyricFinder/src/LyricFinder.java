@@ -14,14 +14,15 @@ public class LyricFinder{
         String userInput;
         
         Song[] songs = getSongs();
+       
 
-        System.out.println("Enter a song name and we'll do our best to find the song and its contents!\n");
+        System.out.println("Enter a song lyric and we'll do our best to find the song with similar lyrics!\n");
         
         for (Song song : songs) {
         	System.out.println(song.getSongName());
         }
       
-        System.out.println("\nEnter here: ");
+        System.out.println("\nEnter here (or type stop to end the program): ");
         while (true) {
             userInput = keyboard.nextLine();
             
@@ -31,17 +32,15 @@ public class LyricFinder{
             
             Song songToShow = null;
             for (Song song : songs) {
-                  if (userInput.equalsIgnoreCase(song.getSongName())) {
-                         songToShow = song;
-                         break;
-                  }
+            	if(getLevenshteinDistance(userInput.toLowerCase().replaceAll(" ", ""), song.getSongName().replaceAll(" ", "")) < 5) {
+            		songToShow = song;
+                    break;
+                  } 
             }
             System.out.println(songToShow); 
             }
         keyboard.close();
 	}
-	
-	
 	
 	
 	private static Song[] getSongs() throws FileNotFoundException{
@@ -84,4 +83,37 @@ public class LyricFinder{
         reader.close();
         return contents;
   }
+	
+	
+	public static int getLevenshteinDistance(String str1, String str2){    
+		
+        int len1 = str1.length();
+
+        int len2 = str2.length();
+
+        int[][] arr = new int[len1 + 1][len2 + 1];
+
+        for (int i = 0; i <= len1; i++)
+
+            arr[i][0] = i;
+
+        for (int i = 1; i <= len2; i++)
+
+            arr[0][i] = i;
+
+        for (int i = 1; i <= len1; i++) {
+
+            for (int j = 1; j <= len2; j++) {
+
+                int m = (str1.charAt(i - 1) == str2.charAt(j - 1)) ? 0:1;                        
+
+                arr[i][j] = Math.min(Math.min(arr[i - 1][j] + 1, arr[i][j - 1] + 1), arr[i - 1][j - 1] + m);
+
+            }
+
+        }
+
+        return arr[len1][len2];
+
+    }
 }
