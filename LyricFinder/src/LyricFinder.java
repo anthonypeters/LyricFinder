@@ -116,23 +116,4 @@ public class LyricFinder{
         return arr[len1][len2];
 
     }
-	
-	public static ArrayList<String> getLyric() throws FileNotFoundException{
-		ArrayList<String> songLyrics = new ArrayList<String>(); 
-	        for (int i = 0; i <= songNames.length - 1; i++) {
-
-	               
-	               
-	               File[] songFile = new File("Songs/").listFiles();
-	               for(File file: songFile) {
-	            	    ArrayList<String> contents = getContents(file);
-	                     for (int j=3; j <contents.size()-1; j++) {
-	                    	 songLyrics.add(contents.get(j));
-	                     }
-	               }
-	        
-	        
-	        }
-	        return songLyrics;
-	}
 }
