@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class LyricFinder{
 	
-	private static final String[] songNames = new String[] {"7 Rings", "Another One Bites the Dust", "Isn't She Lovely", "Old Town Road", "Thriller"};
+	private static final String[] songNames = new String[] {"7 Rings", "Another One Bites the Dust", 
+						"Isn't She Lovely", "Old Town Road", "Thriller"};
 	
 	
 	
