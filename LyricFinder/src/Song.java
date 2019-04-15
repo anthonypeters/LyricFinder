@@ -17,12 +17,8 @@ public class Song {
 	public String getSongName() {
         return this.songName;
   }
-	public String getArtistName() {
-        return this.artist;
-  }
-	public ArrayList<String> getLyrics() {
+	public ArrayList<String> getLyrics(){
 		return this.lyrics;
-  }
-
+	}
 }
 
