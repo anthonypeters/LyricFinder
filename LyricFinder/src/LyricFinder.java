@@ -16,14 +16,11 @@ public class LyricFinder{
         Song[] songs = getSongs();
        
 
-        System.out.println("Enter a song that you would like to view and we'll do our "
+        System.out.println("Enter a song lyrcic and we'll do our "
         		+ "best to find the song that most closely matches your input!\n");
         
-        //for (Song song : songs) {
-        	//System.out.println(song.getSongName());
-        //}
       
-        System.out.println("\nEnter here: ");
+        System.out.println("\nEnter here (or enter stop to exit the program): ");
         while (true) {
             userInput = keyboard.nextLine();
             
@@ -35,7 +32,7 @@ public class LyricFinder{
             for (Song song : songs) {
             	for(int n = 0; n < song.getLyrics().size(); n++) {          		
             	if(getLevenshteinDistance(userInput.toLowerCase().replaceAll(" ", ""), 
-            			song.getLyrics().get(n).toLowerCase().replaceAll(" ", "")) < 6) {
+            			song.getLyrics().get(n).toLowerCase().replaceAll(" ", "")) < 5) {
             		songToShow = song;
                     break;
                   } 
