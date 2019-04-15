@@ -16,28 +16,34 @@ public class LyricFinder{
         Song[] songs = getSongs();
        
 
-        System.out.println("Enter a song lyric and we'll do our best to find the song with similar lyrics!\n");
+        System.out.println("Enter a song that you would like to view and we'll do our "
+        		+ "best to find the song that most closely matches your input!\n");
         
-        for (Song song : songs) {
-        	System.out.println(song.getSongName());
-        }
+        //for (Song song : songs) {
+        	//System.out.println(song.getSongName());
+        //}
       
-        System.out.println("\nEnter here (or type stop to end the program): ");
+        System.out.println("\nEnter here: ");
         while (true) {
             userInput = keyboard.nextLine();
             
             if (userInput.equalsIgnoreCase("stop")) {
                   break;
-            }
+            } 
             
             Song songToShow = null;
             for (Song song : songs) {
-            	if(getLevenshteinDistance(userInput.toLowerCase().replaceAll(" ", ""), song.getSongName().replaceAll(" ", "")) < 5) {
+            	for(int n = 0; n < song.getLyrics().size(); n++) {          		
+            	if(getLevenshteinDistance(userInput.toLowerCase().replaceAll(" ", ""), 
+            			song.getLyrics().get(n).toLowerCase().replaceAll(" ", "")) < 6) {
             		songToShow = song;
                     break;
                   } 
+            	}
             }
-            System.out.println(songToShow); 
+            System.out.println(songToShow+"\n\n"); 
+            System.out.println("If this was not the song you were looking for try again \n"
+            		+ "(or type stop to exit the program): ");
             }
         keyboard.close();
 	}
@@ -46,7 +52,7 @@ public class LyricFinder{
 	private static Song[] getSongs() throws FileNotFoundException{
         Song[] song = new Song[songNames.length];
         for (int i = 0; i <= songNames.length - 1; i++) {
-               String songName = songNames[i], songArtist;
+               String songName = songNames[i];
                
                
                File songFile = new File("Songs/" + songNames[i]);
@@ -55,7 +61,7 @@ public class LyricFinder{
                      ArrayList<String> contents = getContents(songFile);
                      ArrayList<String> songLyrics = new ArrayList<String>();
                      
-                     songArtist = contents.get(1).trim();
+                     String songArtist = contents.get(1).trim();
                      
                      for (int j=3; j <contents.size()-1; j++) {
                     	 songLyrics.add(contents.get(j));
