@@ -1,5 +1,5 @@
 # LyricFinder
-# By: Anthony Peters and Peter Radev
+# By: Anthony Peters, Peter Radev, and Akad Shabila
 # Read Me written by Anthony Peters
 
 This was a program created mostly by myself with the help of Peter. The goal of this program was to create a database, and
